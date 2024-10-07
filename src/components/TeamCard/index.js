@@ -1,18 +1,20 @@
-// Write your code here
+// FIX8: To use Link component, it should be imported
 import {Link} from 'react-router-dom'
 
 import './index.css'
 
 const TeamCard = props => {
-  const {teamItem} = props
-  const {id, name, teamImageUrl} = teamItem
+  const {teamDetails} = props
+  const {name, id, teamImageURL} = teamDetails
+
   return (
-    <li className="list-item">
+    // FIX9: When clicked on TeamCard, page should be navigated to the URL '/team-matches/${id}'
+    // FIX10: "exact" and "path" props are used in Route component to match routes
+    // FIX11: "to" is the prop used to give the URL for navigation to Link component
+    <li className="team-item">
       <Link to={`/team-matches/${id}`} className="link">
-        <img src={teamImageUrl} className="image-url" alt={`${name}`} />
-        <div>
-          <p className="card-heading">{name}</p>
-        </div>
+        <img src={teamImageURL} alt={name} className="team-logo" />
+        <p className="team-name">{name}</p>
       </Link>
     </li>
   )
